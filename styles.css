@@ -1,0 +1,28 @@
+:root{ --burnt:#CC5500; --accent:#FFD6A8; --bg:#fffaf5; --dark:#111 }
+*{box-sizing:border-box}
+body{font-family:Inter,Arial,Helvetica,sans-serif;margin:0;background:linear-gradient(180deg,#fffaf5,#fff4ec);color:var(--dark)}
+.wrap{max-width:1100px;margin:0 auto;padding:12px}
+.header-inner{display:flex;align-items:center;justify-content:space-between}
+.site-header{background:linear-gradient(90deg,var(--burnt),#000);color:#fff;padding:14px 0}
+.brand h1{font-family:'Playfair Display',serif;margin:0;font-size:1.4rem}
+.brand .motto{font-style:italic;color:var(--accent);margin-top:4px}
+.main-nav a{color:#fff;margin-left:12px;text-decoration:none;font-weight:600}
+.hero{height:48vh;border-radius:8px;overflow:hidden}
+.slides{display:flex;width:300%;height:100%;animation:slide 15s infinite}
+.slide{flex:0 0 100%;position:relative}
+.slide img{width:100%;height:100%;object-fit:cover;display:block}
+.caption{position:absolute;left:18px;bottom:18px;background:rgba(0,0,0,0.45);color:#fff;padding:8px 12px;border-radius:6px}
+@keyframes slide{0%{margin-left:0}33%{margin-left:-100%}66%{margin-left:-200%}100%{margin-left:0}}
+.section{padding:20px 0}
+h2{font-family:'Playfair Display',serif;color:var(--burnt);margin:0 0 12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px}
+.card{background:#fff;padding:12px;border-radius:10px;box-shadow:0 8px 20px rgba(0,0,0,0.06)}
+.card img{width:100%;height:220px;object-fit:cover;border-radius:8px}
+.price{color:var(--burnt);font-weight:700;margin-top:6px}
+.btn{background:var(--burnt);color:#fff;border:none;padding:10px 12px;border-radius:8px;cursor:pointer;font-weight:700}
+.ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:8px;border-radius:8px}
+.small{font-size:13px;color:#666}
+.site-footer{background:#0b0b0b;color:#fff;padding:18px 0;margin-top:18px;text-align:center}
+.hidden{display:none}
+.input,textarea,select{width:100%;padding:8px;border-radius:6px;border:1px solid #ddd;margin-bottom:8px}
+@media(max-width:720px){ .hero{height:36vh} .card img{height:180px} .brand h1{font-size:1.1rem} }

@@ -7,7 +7,45 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<section id="test-checkout" style="text-align:center; padding:40px;">
+  <h2>Test Checkout</h2>
+  <p>This is a demo checkout button to test Flutterwave integration.</p>
+  <button 
+    id="checkoutBtn" 
+    style="padding: 12px 24px; background-color: #ff3366; color: white; border: none; border-radius: 6px; font-size: 16px; cursor: pointer;">
+    Checkout ₦1,000
+  </button>
+</section>
+
+<script>
+  document.getElementById("checkoutBtn").addEventListener("click", function() {
+    FlutterwaveCheckout({
+      public_key: "FLWPUBK-6fc28cdcef00d1baf67eeef4010d608b-X", // replace later with your test key
+      tx_ref: "FADS_" + Date.now(),
+      amount: 1000,
+      currency: "NGN",
+      payment_options: "card,ussd,banktransfer",
+      customer: {
+        email: "customer@example.com",
+        phone_number: "08012345678",
+        name: "Test Customer"
+      },
+      callback: function (data) {
+        alert("Payment complete! Transaction ID: " + data.transaction_id);
+      },
+      onclose: function() {
+        alert("Payment window closed");
+      },
+      customizations: {
+        title: "FADs by PHURAY Store",
+        description: "Demo Purchase",
+        logo: "https://i.imgur.com/BWlKxKp.png"
+      }
+    });
+  });
+          </script>
+  <body>
+
   <header class="site-header">
     <div class="wrap header-inner">
       <div class="brand">

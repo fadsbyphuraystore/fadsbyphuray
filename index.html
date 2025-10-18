@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>FADs by PHURAY — Fashion & Jewelry Store</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <div class="brand">
+        <h1>FADs by PHURAY</h1>
+        <p class="motto">fascinating &amp; trendy...</p>
+      </div>
+      <nav class="main-nav">
+        <a href="#" onclick="showHome();return false">Home</a>
+        <a href="#" onclick="showShop();return false">Shop</a>
+        <a href="#about" onclick="scrollToSection('about');return false">About</a>
+        <a href="#contact" onclick="scrollToSection('contact');return false">Contact</a>
+        <a href="#account" onclick="showAccount();return false">Account</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap" id="appRoot">
+    <!-- Home / Slider -->
+    <section id="homeView">
+      <div class="hero">
+        <div class="slides">
+          <div class="slide"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop" alt=""><div class="caption">Your online fashion and Jewelry store</div></div>
+          <div class="slide"><img src="https://images.unsplash.com/photo-1521334884684-d80222895322?q=80&w=1600&auto=format&fit=crop" alt=""><div class="caption">Statement Jewelry</div></div>
+          <div class="slide"><img src="https://images.unsplash.com/photo-1542060748-10c28b62716e?q=80&w=1600&auto=format&fit=crop" alt=""><div class="caption">Timeless Looks</div></div>
+        </div>
+      </div>
+
+      <section class="section">
+        <h2>Clothing</h2>
+        <p class="small">(No products yet — add via Admin or Firestore.)</p>
+        <div id="clothingGrid" class="grid"></div>
+      </section>
+
+      <section class="section">
+        <h2>Jewelry</h2>
+        <p class="small">(No products yet — add via Admin or Firestore.)</p>
+        <div id="jewelryGrid" class="grid"></div>
+      </section>
+
+      <section id="about" class="section">
+        <h2>About Us</h2>
+        <p class="small">FADs by PHURAY — quality fashion & jewelry curated with care. We focus on affordable, trendy pieces.</p>
+      </section>
+    </section>
+
+    <!-- Shop -->
+    <section id="shopView" class="section hidden">
+      <h2>Shop</h2>
+      <div id="shopGrid" class="grid"></div>
+    </section>
+
+    <!-- Product detail -->
+    <section id="productView" class="section hidden">
+      <div id="productDetail"></div>
+    </section>
+
+    <!-- Cart & Checkout -->
+    <section id="cartView" class="section hidden">
+      <h2>Cart & Checkout</h2>
+      <div id="cartContainer"></div>
+    </section>
+
+    <!-- Account -->
+    <section id="accountView" class="section hidden">
+      <h2>Account</h2>
+      <div id="accountArea"></div>
+    </section>
+
+    <!-- Admin (hidden route: /admin or #admin) -->
+    <section id="adminView" class="section hidden">
+      <h2>Admin Dashboard</h2>
+      <div id="adminArea"></div>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p class="small">Email: <a href="mailto:fadsbyphuray2001@gmail.com">fadsbyphuray2001@gmail.com</a></p>
+      <p class="small">WhatsApp: <a href="https://wa.me/2348109443159">+2348109443159</a></p>
+      <p class="small">Instagram: <a href="https://www.instagram.com/phuray_capella">phuray_capella</a></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>© <span id="year"></span> FADs by PHURAY</div>
+      <div class="small">Return policy: Returns accepted within 5 days. 70% refund on approved returns.</div>
+    </div>
+  </footer>
+
+  <!-- libs -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="https://checkout.flutterwave.com/v3.js"></script>
+
+  <!-- app config & logic -->
+  <script src="firebase.js"></script>
+  <script src="script.js"></script>
+</body>
+        </html>
+        

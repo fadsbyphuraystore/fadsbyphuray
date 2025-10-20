@@ -25,7 +25,8 @@ function initFirebaseFromEnv() {
 module.exports = async (req, res) => {
   if (req.method !== 'POST') return res.status(405).send('Method Not Allowed');
 
-  try {
+  try {const secretHash = process.env.FLW_SECRET_HASH || "Fadsbyphuray2001hash";
+       
     initFirebaseFromEnv();
   } catch (err) {
     console.error('Firebase init error', err);

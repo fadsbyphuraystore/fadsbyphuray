@@ -31,11 +31,21 @@ module.exports = async (req, res) => {
     console.error('Firebase init error', err);
     return res.status(500).json({ error: 'Server configuration error' });
   }
-
+  
   const FLW_SECRET_KEY = process.env.FLW_SECRET_KEY;
   if (!FLW_SECRET_KEY) {
     console.error('FLW_SECRET_KEY not set');
     return res.status(500).json({ error: 'FLW secret key not configured' });
+  }
+// Secret hash verification for webhook (set in Vercel env as FLW_SECRET_HASH)
+const FLW_SECRET_HASH = process.env.FLW_SECRET_HASH || null;
+const incomingHash = (req.headers['verif-hash'] || req.headers['verification-hash'] || '').toString();
+
+// If you set a secret hash in Flutterwave dashboard, require that header to match
+if (FLW_SECRET_HASH) {
+  if (!incomingHash || incomingHash !== FLW_SECRET_HASH) {
+    console.warn('Invalid or missing webhook signature', { incomingHash, expected: !!FLW_SECRET_HASH });
+    return res.status(401).json({ error: 'Invalid webhook signature' });
   }
 
   const payload = req.body || {};

@@ -1,0 +1,11 @@
+{
+  "name": "fadsbyphuray-site",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "firebase-admin": "^11.10.0"
+  }
+}

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard | FADs by PHURAY</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <h2>Your Dashboard</h2>
+    <div id="userInfo"></div>
+    <button id="logoutBtn" class="btn">Logout</button>
+  </main>
+
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+    import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { doc, getDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const userInfo = document.getElementById('userInfo');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    onAuthStateChanged(auth, async (user) => {
+      if (!user) {
+        location.href = 'login.html';
+        return;
+      }
+      const snap = await getDoc(doc(db, 'users', user.uid));
+      const data = snap.exists() ? snap.data() : {};
+      userInfo.innerHTML = `<p><strong>${data.name || user.email}</strong></p><p>Wallet: ₦${(data.wallet||0).toLocaleString()}</p><p>Your referral code: <strong>${data.ref||'—'}</strong></p>`;
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      await signOut(auth);
+      location.href = 'login.html';
+    });
+  </script>
+</body>
+</html>

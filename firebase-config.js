@@ -5,13 +5,6 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/11.0.1/firebase
 
 /* ===== REPLACE this object with the config you copied from Firebase console ===== */
 const firebaseConfig = {
-  // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-const firebaseConfig = {
   apiKey: "AIzaSyCmT7vExpfDDo3k9B6wt6i2-we6hxNoBIQ",
   authDomain: "fadstore-firebase.firebaseapp.com",
   projectId: "fadstore-firebase",
@@ -19,7 +12,6 @@ const firebaseConfig = {
   messagingSenderId: "213541304355",
   appId: "1:213541304355:web:53692c600b0419b8c89996"
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 };

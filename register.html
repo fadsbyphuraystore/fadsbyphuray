@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Register | FADs by PHURAY</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="wrap">
+    <h2>Create Account</h2>
+    <form id="registerForm">
+      <input id="name" placeholder="Full name" required class="input" />
+      <input id="email" placeholder="Email" type="email" required class="input" />
+      <input id="password" placeholder="Password" type="password" required class="input" />
+      <button type="submit" class="btn">Register</button>
+    </form>
+    <p>Already registered? <a href="login.html">Login</a></p>
+  </main>
+
+  <script type="module">
+    import { auth, db } from "./firebase-config.js";
+    import { createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import { doc, setDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+    const form = document.getElementById('registerForm');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      try {
+        const cred = await createUserWithEmailAndPassword(auth, email, password);
+        // create basic user doc in Firestore
+        await setDoc(doc(db, 'users', cred.user.uid), {
+          name,
+          email,
+          wallet: 0,
+          ref: 'R' + Math.random().toString(36).slice(2,8).toUpperCase(),
+          createdAt: serverTimestamp()
+        });
+        alert('Account created! Please login.');
+        location.href = 'login.html';
+      } catch(err) {
+        alert(err.message);
+      }
+    });
+  </script>
+</body>
+</html>
